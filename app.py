@@ -5,7 +5,7 @@ import nltk
 import re
 from textblob import TextBlob
 import streamlit as st
-import spacy
+
 from sklearn.feature_extraction.text import CountVectorizer
 import matplotlib.pyplot as plt
 
