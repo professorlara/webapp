@@ -1,5 +1,6 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from textblob import TextBlob
+import spacy
 # Define the functions
 def wordcount(text):
     words = text.split()
