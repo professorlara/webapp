@@ -10,18 +10,6 @@ import matplotlib.pyplot as plt
 from predict_page import predict_arousal, load_model
 from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,wordclass
 
-def download_nltk_data():
-    nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
-    nltk.data.path.append(nltk_data_path)
-    os.makedirs(nltk_data_path, exist_ok=True)
-    
-
-    required_packages = ['averaged_perceptron_tagger', 'punkt']
-    for package in required_packages:
-        if not os.path.exists(os.path.join(nltk_data_path, package)):
-            nltk.download(package, download_dir=nltk_data_path)
-
-download_nltk_data()
 
 #import requirements.txt
 
