@@ -1,5 +1,8 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from textblob import TextBlob
+import pattern
+from pattern.en import tag
+from collections import defaultdict
 
 import re
 # Define the functions
