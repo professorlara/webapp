@@ -4,6 +4,6 @@ textblob == 0.18.0
 scikit-learn
 pygal
 matplotlib
-re
+pattern
 
 
