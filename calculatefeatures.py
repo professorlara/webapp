@@ -1,6 +1,6 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from textblob import TextBlob
-import spacy
+
 import re
 # Define the functions
 def wordcount(text):
