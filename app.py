@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import nltk
-nltk.download('averaged_perceptron_tagger')
 from textblob import TextBlob
 import streamlit as st
 from sklearn.feature_extraction.text import CountVectorizer
@@ -10,7 +9,15 @@ import matplotlib.pyplot as plt
 from predict_page import predict_arousal, load_model
 from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,wordclass
 
+nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
+nltk.data.path.append(nltk_data_path)
 
+# Ensure the directory exists
+os.makedirs(nltk_data_path, exist_ok=True)
+
+# Download necessary NLTK data
+nltk.download('averaged_perceptron_tagger', download_dir=nltk_data_path)
+nltk.download('punkt', download_dir=nltk_data_path)
 
 #import requirements.txt
 
