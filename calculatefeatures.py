@@ -35,9 +35,11 @@ def unique_ngrams(text, n):
     n_grams = analyzer(text)
     return len(set(n_grams))
 
+nlp = spacy.load('en_core_web_sm')
+
+
 def wordclass(text, category):
-    blob = TextBlob(text)
-    tags = blob.tags
+    doc = nlp(text)
     
     counts = {
         'adjective': 0,
@@ -52,30 +54,30 @@ def wordclass(text, category):
         'coordinating_conjunctions': 0
     }
     
-    for word, tag in tags:
-        if tag in ['NN', 'NNS', 'NNP', 'NNPS']:
+    for token in doc:
+        if token.pos_ in ['NOUN', 'PROPN']:
             counts['noun'] += 1
-        elif tag == 'IN':
+        elif token.tag_ == 'IN':
             counts['preposition'] += 1
-        elif tag == 'VB':
+        elif token.tag_ == 'VB':
             counts['base_verb'] += 1
             counts['total_verb'] += 1
-        elif tag in ['VBD', 'VBG']:
+        elif token.tag_ in ['VBD', 'VBG']:
             counts['total_verb'] += 1
-        elif tag == 'VBN':
+        elif token.tag_ == 'VBN':
             counts['total_verb'] += 1
             counts['past_participle_verb'] += 1
-        elif tag == 'VBP':
+        elif token.tag_ == 'VBP':
             counts['non3rdpersonsingularpresent_verb'] += 1
             counts['total_verb'] += 1
-        elif tag == 'VBZ':
+        elif token.tag_ == 'VBZ':
             counts['3rdpersonsingularpresent_verb'] += 1
             counts['total_verb'] += 1
-        elif tag in ['JJ', 'JJR', 'JJS']:
+        elif token.pos_ in ['ADJ']:
             counts['adjective'] += 1
-        elif tag == 'CC':
+        elif token.tag_ == 'CC':
             counts['coordinating_conjunctions'] += 1
-        elif tag == 'PRP':
+        elif token.tag_ == 'PRP':
             counts['personal_pronoun'] += 1
     
     content_density = (counts['total_verb'] + counts['noun'] + counts['adjective']) / wordcount(text)
