@@ -5,5 +5,5 @@ scikit-learn
 pygal
 matplotlib
 re
-cupy
+
 
