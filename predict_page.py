@@ -1,12 +1,10 @@
-import os
+
 import streamlit as st
 import pandas as pd
 import numpy as np
-
-import re
-import nltk
-
-from textblob import TextBlob
+import pattern
+from pattern.en import tag
+from collections import defaultdict
 
 from sklearn.feature_extraction.text import CountVectorizer
 import matplotlib.pyplot as plt
