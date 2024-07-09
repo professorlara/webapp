@@ -1,9 +1,9 @@
-import os
+#import os
 import pandas as pd
 import numpy as np
-import nltk
+#import nltk
 import re
-from textblob import TextBlob
+#from textblob import TextBlob
 import streamlit as st
 
 from sklearn.feature_extraction.text import CountVectorizer
