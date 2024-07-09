@@ -15,19 +15,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
 
-def download_nltk_data():
-    nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
-    nltk.data.path.append(nltk_data_path)
-    os.makedirs(nltk_data_path, exist_ok=True)
-    
-    # Download necessary NLTK data if not already present
-    required_packages = ['averaged_perceptron_tagger', 'punkt']
-    for package in required_packages:
-        if not os.path.exists(os.path.join(nltk_data_path, package)):
-            nltk.download(package, download_dir=nltk_data_path)
 
-# Ensure NLTK data is available
-download_nltk_data()
 
 
 def load_model():
