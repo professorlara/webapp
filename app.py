@@ -11,6 +11,9 @@ import matplotlib.pyplot as plt
 
 from predict_page import predict_arousal, load_model
 from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,wordclass
+import pattern
+from pattern.en import tag
+from collections import defaultdict
 
 
 #import requirements.txt
