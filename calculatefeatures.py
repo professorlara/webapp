@@ -35,10 +35,11 @@ def unique_ngrams(text, n):
     n_grams = analyzer(text)
     return len(set(n_grams))
 
-nlp = spacy.load('en_core_web_sm')
 
 
 def wordclass(text, category):
+    
+    nlp = spacy.load('en_core_web_sm')
     doc = nlp(text)
     
     counts = {
