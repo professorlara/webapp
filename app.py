@@ -4,6 +4,7 @@ import numpy as np
 import nltk
 from textblob import TextBlob
 import streamlit as st
+import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 import matplotlib.pyplot as plt
 
