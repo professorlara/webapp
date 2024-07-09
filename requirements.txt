@@ -1,3 +1,6 @@
 pandas == 2.0.3
 nltk == 3.8
 textblob == 0.18.0
+sklearn
+pygal
+matplotlib
