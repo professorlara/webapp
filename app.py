@@ -380,7 +380,8 @@ if st.button("Predict Emotion 🎤"):
     custom_style = Style(
         value_font_size=30,  # Adjust font size here
         value_colors=('black',),  
-        label_font_size=0,  
+        label_font_size=0,
+        value_label_font_size = 20
     )
     
     # Function to create a gauge chart
