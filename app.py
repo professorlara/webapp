@@ -397,10 +397,10 @@ if st.button("Predict Emotion 🎤"):
         return gauge.render(is_unicode=True)
 
     def adjust_svg_size(svg, width, height, font_size):
-    # Find and replace width, height, and font-size attributes in SVG
-    svg = svg.replace('<svg ', f'<svg width="{width}" height="{height}" ')
-    svg = svg.replace('text-anchor: middle; font-size: 15px;', f'text-anchor: middle; font-size: {font_size}px;')
-    return svg
+        # Find and replace width, height, and font-size attributes in SVG
+        svg = svg.replace('<svg ', f'<svg width="{width}" height="{height}" ')
+        svg = svg.replace('text-anchor: middle; font-size: 15px;', f'text-anchor: middle; font-size: {font_size}px;')
+        return svg
     
     # Example data for three gauge charts
     titles = ['Arousal', 'Valence', 'Dominance']
