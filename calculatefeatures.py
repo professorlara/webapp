@@ -1,5 +1,8 @@
-from pattern.en import parse
+import stanza
 from sklearn.feature_extraction.text import CountVectorizer
+
+# Load the English model
+nlp = stanza.Pipeline('en')
 
 # Define the functions
 def wordcount(text):
@@ -37,8 +40,7 @@ def unique_ngrams(text, n):
     return len(set(n_grams))
 
 def wordclass(text, category):
-    # Parse the text to get POS tags
-    parsed_text = parse(text, tokenize=True, tag=True)
+    doc = nlp(text)
     
     counts = {
         'adjective': 0,
@@ -53,9 +55,9 @@ def wordclass(text, category):
         'coordinating_conjunctions': 0
     }
     
-    for sentence in parsed_text.split():
-        for word_tag in sentence.split():
-            word, tag = word_tag.split('/')
+    for sentence in doc.sentences:
+        for word in sentence.words:
+            tag = word.xpos
             if tag in ['NN', 'NNS', 'NNP', 'NNPS']:
                 counts['noun'] += 1
             elif tag == 'IN':
