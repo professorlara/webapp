@@ -1,6 +1,6 @@
 import stanza
 from sklearn.feature_extraction.text import CountVectorizer
-
+stanza.download('en', use_progress_bar=False)
 # Load the English model
 nlp = stanza.Pipeline('en')
 
