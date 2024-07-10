@@ -412,19 +412,22 @@ if st.button("Predict Emotion 🎤"):
         gauge_svg = create_gauge_chart(title, percentage, color)
         gauge_svgs.append(adjust_svg_size(gauge_svg, width=200, height=150, font_size=30))  # Adjust width, height, and font size
     
-    st.write("""
-    <style>
-        .gauge-container {
-            width: 250px;
-            height: 200px;
-            margin: 10px;
-            display: inline-block;
-        }
-    </style>
-    """)
-    st.write("<div style='text-align: center;'>")
+    st.markdown("""
+        <style>
+            .gauge-container {
+                width: 250px;
+                height: 200px;
+                margin: 10px;
+                display: inline-block;
+            }
+            .centered {
+                text-align: center;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<div class='centered'>", unsafe_allow_html=True)
     for gauge_svg in gauge_svgs:
-        st.write(f"<div class='gauge-container'>{gauge_svg}</div>", unsafe_allow_html=True)
-    st.write("</div>")
-    
-    
+        st.markdown(f"<div class='gauge-container'>{gauge_svg}</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+        
