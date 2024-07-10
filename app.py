@@ -212,9 +212,7 @@ if st.button("Predict Emotion 🎤"):
    
 
     #TEXT TO GO WITH PLOT
-st.markdown('''
-    :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
-    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
+
 
 
 
