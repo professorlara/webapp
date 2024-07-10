@@ -218,18 +218,17 @@ if st.button("Predict Emotion 🎤"):
 
     if new_predictionsA < 4:
         #st.write("This song has a low arousal rating of",str(percentageA), "%.")
-        st.markdown("This :lightblue[low]arousal rating suggests that the song is calm and relaxing.")
+        st.markdown('''This :blue[low] arousal rating suggests that the song is calm and relaxing.''')
         colourA = 'lightblue'
     elif new_predictionsA >= 4 and new_predictionsA <=5:
         #st.write("This song has a moderate arousal rating of", str(percentageA), "%.")
         st.markdown('''
-        This :lightgreen[moderate] arousal rating suggests that the song is upbeat and rhythimical.''')
-        #st.markdown('''
-        #:black[This] :lightgreen[moderate] :black[arousal rating suggests that the song is upbeat and rhythimical.]''')
+        This :green[moderate] arousal rating suggests that the song is upbeat and rhythimical.''')
         colourA = 'lightgreen'
     else:
         #st.write("This song has a high arousal rating of", str(percentageA), "%.")
-        st.markdown("This :orange[high]arousal rating suggests that the song is exciting and energetic.")
+        st.markdown('''
+        This :orange[high] arousal rating suggests that the song is exciting and energetic.")
         colourA = 'orange'
 
     #PLOT 
@@ -276,15 +275,15 @@ if st.button("Predict Emotion 🎤"):
 
     if new_predictionsV < 4:
         #st.write("This song has a low valence rating of",str(percentageV), "%.")
-        st.write("This valence rating suggests that the song is melancholic and sad.")
+        st.markdown('''This :blue[low] valence rating suggests that the song is melancholic and sad.")
         colourV = 'lightblue'
     elif new_predictionsV >= 4 and new_predictionsV <=5:
         #st.write("This song has a moderate valence rating of", str(percentageV), "%.")
-        st.write("This valence rating suggests that the song is pleasant and neutral.")
+        st.markdown('''This :green[moderate] valence rating suggests that the song is pleasant and neutral.")
         colourV = 'lightgreen'
     else:
         #st.write("This song has a high valence rating of", str(percentageV), "%.")
-        st.write("This valence rating suggests that the song is joyful and happy.")
+        st.markdown('''This :orange[high] valence rating suggests that the song is joyful and happy.")
         colourV = 'orange'
     #PLOT
 
@@ -331,15 +330,15 @@ if st.button("Predict Emotion 🎤"):
 
     if new_predictionsD < 4:
         #st.write("This song has a low dominance rating of",str(percentageD), "%.")
-        st.write("This dominance rating suggests that the song is gentle and reserved.")
+        st.markdown('''This :blue[low] dominance rating suggests that the song is gentle and reserved.")
         colourD = 'lightblue'
     elif new_predictionsD >= 4 and new_predictionsD <=5:
         #st.write("This song has a moderate dominance rating of", str(percentageD), "%.")
-        st.write("This dominance rating suggests that the song is impactful and controlled.")
+        st.markdown('''This :green[moderate] dominance rating suggests that the song is impactful and controlled.")
         colourD = 'lightgreen'
     else:
         #st.write("This song has a high dominance rating of", str(percentageD), "%.")
-        st.write("This dominance rating suggests that the song is powerful and commanding.")
+        st.markdown('''This :orange[high] dominance rating suggests that the song is powerful and commanding.")
         colourD = 'orange'
     #PLOT
 
