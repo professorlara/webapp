@@ -66,13 +66,7 @@ if st.button("Predict Emotion 🎤"):
 
     # Convert the dictionary to a DataFrame
     df = pd.DataFrame([result_dict])
-
     
-    status_placeholder.write("This may take some time... ⌛")
-
-    #This is where the prediction for valence/donimance goes
-
-
     from sklearn.ensemble import GradientBoostingRegressor
     from sklearn.model_selection import train_test_split
     from sklearn.metrics import mean_absolute_error
@@ -86,6 +80,52 @@ if st.button("Predict Emotion 🎤"):
     train = pd.read_csv('TRAIN language data_1.csv',delimiter=";")
     test = pd.read_csv('TEST language data_1.csv',delimiter=";")
     validate= pd.read_csv('VAL language data_1.csv',delimiter=";")
+
+    # Combine the train and validate data
+    train_validate = pd.concat([train, validate], ignore_index=True, sort=False)
+
+    # Extract the relevant features and target variable
+    X = train_validate[features].applymap(lambda x: str(x).replace(',', '.')).astype(float)
+    y = train_validate['arousal_tags'].apply(lambda x: str(x).replace(',', '.')).astype(float)
+
+    # Replace inf, -inf, and NaN with 0
+    X = X.replace((np.inf, -np.inf, np.nan), 0)
+
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Train the GradientBoostingRegressor model
+    model = GradientBoostingRegressor(
+        criterion='squared_error',
+        learning_rate=0.1,
+        loss='absolute_error',
+        min_samples_leaf=10,
+        n_estimators=200,
+        random_state=42
+        )
+    model.fit(X_train, y_train)
+    # Evaluate the model
+    y_pred = model.predict(X_test)
+    mae = mean_absolute_error(y_test, y_pred)
+    #load_model()
+
+
+    #new_predictions = predict_arousal(df)
+
+    df = df[features].applymap(lambda x: str(x).replace(',', '.')).astype(float)
+    df = df.replace((np.inf, -np.inf, np.nan), 0)
+    new_predictionsA = model.predict(df)
+
+    st.write(new_predictionsA)
+    
+    status_placeholder.write("This may take some time... ⌛")
+
+    
+
+    #This is where the prediction for valence/donimance goes
+
+
+  
     
     
 
