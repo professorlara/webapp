@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-import stanza
 from sklearn.feature_extraction.text import CountVectorizer
 
 from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,wordclass
@@ -49,16 +48,6 @@ if st.button("Predict Emotion 🎤"):
     num_bigrams = ngrams(lyrics, 2)
     num_unique_bigrams = unique_ngrams(lyrics, 2)
 
-    adjective_count = wordclass(lyrics, 'adjective')
-    noun_count = wordclass(lyrics, 'noun')
-    base_verb_count = wordclass(lyrics, 'base_verb')
-    preposition_count = wordclass(lyrics, 'preposition')
-    personal_pronoun_count = wordclass(lyrics, 'personal_pronoun')
-    non3rdpersonsingularpresent_verb_count = wordclass(lyrics, 'non3rdpersonsingularpresent_verb')
-    thirdpersonsingularpresent_verb_count = wordclass(lyrics, '3rdpersonsingularpresent_verb')
-    TOTAL_verb_count = wordclass(lyrics, 'total_verb')
-    past_participle_verb_freq = wordclass(lyrics, 'past_participle_verb_freq')
-    coordinating_conjunctions_freq = wordclass(lyrics, 'coordinating_conjunctions_freq')
 
     # Initialize dictionary
     result_dict = {
@@ -73,16 +62,6 @@ if st.button("Predict Emotion 🎤"):
         "num_unique_trigrams": num_unique_trigrams,
         "num_bigrams": num_bigrams,
         "num_unique_bigrams": num_unique_bigrams,
-        "adjective_count": adjective_count,
-        "noun_count": noun_count,
-        "base_verb_count": base_verb_count,
-        "preposition_count": preposition_count,
-        "personal_pronoun_count": personal_pronoun_count,
-        "non3rdpersonsingularpresent_verb_count": non3rdpersonsingularpresent_verb_count,
-        "thirdpersonsingularpresent_verb_count": thirdpersonsingularpresent_verb_count,
-        "TOTAL_verb_count": TOTAL_verb_count,
-        "past_participle_verb_freq": past_participle_verb_freq,
-        "coordinating_conjunctions_freq": coordinating_conjunctions_freq
     }
 
     # Convert the dictionary to a DataFrame
