@@ -124,6 +124,78 @@ if st.button("Predict Emotion 🎤"):
 
     #This is where the prediction for valence/donimance goes
 
+     #Valence
+    # Extract the relevant features and target variable
+    X = train_validate[features].applymap(lambda x: str(x).replace(',', '.')).astype(float)
+    y = train_validate['valence_tags'].apply(lambda x: str(x).replace(',', '.')).astype(float)
+
+    # Replace inf, -inf, and NaN with 0
+    X = X.replace((np.inf, -np.inf, np.nan), 0)
+
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Train the GradientBoostingRegressor model
+    model = GradientBoostingRegressor(
+        criterion='squared_error',
+        learning_rate=0.1,
+        loss='absolute_error',
+        min_samples_leaf=10,
+        n_estimators=200,
+        random_state=42
+        )
+    model.fit(X_train, y_train)
+    # Evaluate the model
+    y_pred = model.predict(X_test)
+    mae = mean_absolute_error(y_test, y_pred)
+    #load_model()
+
+
+    #new_predictions = predict_arousal(df)
+
+    df = df[features].applymap(lambda x: str(x).replace(',', '.')).astype(float)
+    df = df.replace((np.inf, -np.inf, np.nan), 0)
+    new_predictionsV = model.predict(df)
+
+    
+
+
+    #Dominance
+    # Extract the relevant features and target variable
+    X = train_validate[features].applymap(lambda x: str(x).replace(',', '.')).astype(float)
+    y = train_validate['dominance_tags'].apply(lambda x: str(x).replace(',', '.')).astype(float)
+
+    # Replace inf, -inf, and NaN with 0
+    X = X.replace((np.inf, -np.inf, np.nan), 0)
+
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Train the GradientBoostingRegressor model
+    model = GradientBoostingRegressor(
+        criterion='squared_error',
+        learning_rate=0.1,
+        loss='absolute_error',
+        min_samples_leaf=10,
+        n_estimators=200,
+        random_state=42
+        )
+    model.fit(X_train, y_train)
+    # Evaluate the model
+    y_pred = model.predict(X_test)
+    mae = mean_absolute_error(y_test, y_pred)
+    #load_model()
+
+
+    #new_predictions = predict_arousal(df)
+
+    df = df[features].applymap(lambda x: str(x).replace(',', '.')).astype(float)
+    df = df.replace((np.inf, -np.inf, np.nan), 0)
+    new_predictionsD = model.predict(df)
+    
+    st.write(new_predictionsV)
+    st.write(new_predictionsD)
+
 
   
     
