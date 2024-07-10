@@ -391,4 +391,7 @@ if st.button("Predict Emotion 🎤"):
             style=custom_style
     )
     gauge.add('', [{'value': percentageD, 'max_value': 100, 'color': colourD}])
-    gauge.render_in_browser()
+    gauge_svg = gauge.render()
+
+
+    st.components.v1.html(gauge_svg, width=500, height=300)
