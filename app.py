@@ -116,7 +116,7 @@ if st.button("Predict Emotion 🎤"):
     df = df.replace((np.inf, -np.inf, np.nan), 0)
     new_predictionsA = model.predict(df)
 
-    st.write(new_predictionsA)
+    
     
     status_placeholder.write("This may take some time... ⌛")
 
@@ -193,8 +193,7 @@ if st.button("Predict Emotion 🎤"):
     df = df.replace((np.inf, -np.inf, np.nan), 0)
     new_predictionsD = model.predict(df)
     
-    st.write(new_predictionsV)
-    st.write(new_predictionsD)
+    
 
 
   
@@ -384,49 +383,14 @@ if st.button("Predict Emotion 🎤"):
         value_label_font_size = 20
     )
     
-    # Function to create a gauge chart
-    def create_gauge_chart(title, percentage, color):
-        gauge = pygal.SolidGauge(
+    gauge = pygal.SolidGauge(
             half_pie=True,
             inner_radius=0.70,
             show_legend=False,
             style=custom_style
-        )
-        gauge.title = title  # Set title for the gauge
-        gauge.add('', [{'value': percentage, 'max_value': 100, 'color': color}])
-        return gauge.render(is_unicode=True)
+    )
+    gauge.add('', [{'value': percentage, 'max_value': 100, 'color': colour}])
+    
+    
 
-    def adjust_svg_size(svg, width, height, font_size):
-        # Find and replace width, height, and font-size attributes in SVG
-        svg = svg.replace('<svg ', f'<svg width="{width}" height="{height}" ')
-        svg = svg.replace('text-anchor: middle; font-size: 15px;', f'text-anchor: middle; font-size: {font_size}px;')
-        return svg
-    
-    # Example data for three gauge charts
-    titles = ['Arousal', 'Valence', 'Dominance']
-    percentages = [percentageA, percentageV, percentageD]
-    colors = [colourA, colourV, colourD]
-    
-    gauge_svgs = []
-    for title, percentage, color in zip(titles, percentages, colors):
-        gauge_svg = create_gauge_chart(title, percentage, color)
-        gauge_svgs.append(adjust_svg_size(gauge_svg, width=200, height=150, font_size=30))  # Adjust width, height, and font size
-    st.markdown("""
-        <style>
-            .gauge-container {
-                width: 250px;
-                height: 200px;
-                margin: 10px;
-                display: inline-block;
-            }
-            .centered {
-                text-align: center;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("<div class='centered'>", unsafe_allow_html=True)
-    for gauge_svg in gauge_svgs:
-        st.markdown(f"<div class='gauge-container'>{gauge_svg}</div>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
             
