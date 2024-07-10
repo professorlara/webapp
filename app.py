@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 
 import nltk
+import os
+print(os.listdir('/home/appuser'))
+print(os.listdir('/home/appuser/.nltk_data'))
 nltk.data.path.append('/home/appuser/.nltk_data')
 from nltk.tokenize import word_tokenize
 from textblob import TextBlob
