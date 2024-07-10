@@ -395,21 +395,27 @@ if st.button("Predict Emotion 🎤"):
         gauge.title = title  # Set title for the gauge
         gauge.add('', [{'value': percentage, 'max_value': 100, 'color': color}])
         return gauge.render(is_unicode=True)
+
+    def adjust_svg_size(svg, width, height, font_size):
+    # Find and replace width, height, and font-size attributes in SVG
+    svg = svg.replace('<svg ', f'<svg width="{width}" height="{height}" ')
+    svg = svg.replace('text-anchor: middle; font-size: 15px;', f'text-anchor: middle; font-size: {font_size}px;')
+    return svg
     
     # Example data for three gauge charts
     titles = ['Arousal', 'Valence', 'Dominance']
     percentages = [percentageA, percentageV, percentageD]
     colors = [colourA, colourV, colourD]
     
-    # Create gauge charts and store SVGs
     gauge_svgs = []
     for title, percentage, color in zip(titles, percentages, colors):
-        gauge_svgs.append(create_gauge_chart(title, percentage, color))
+        gauge_svg = create_gauge_chart(title, percentage, color)
+        gauge_svgs.append(adjust_svg_size(gauge_svg, width=200, height=150, font_size=30))  # Adjust width, height, and font size
     
     # Display gauge charts side by side in Streamlit
     st.write("<div style='display:flex;'>")
     for gauge_svg in gauge_svgs:
-        st.write(f"<div style='margin: auto;'>{gauge_svg}</div>", unsafe_allow_html=True)    
+        st.write(f"<div style='margin: 10px;'>{gauge_svg}</div>", unsafe_allow_html=True)
     st.write("</div>")
     
     
