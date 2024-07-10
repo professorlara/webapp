@@ -35,8 +35,65 @@ if st.button("Predict Emotion 🎤"):
     status_placeholder = st.empty()
     status_placeholder.write("Predicting emotion... 🔍")
 
+    #This is where the prediction for arousal goes
+
+
+    # Calculate required values
+    num_words = wordcount(lyrics)
+    number_lines = lines(lyrics)
+    content_density = type_token_ratio(lyrics)
+    num_5grams = ngrams(lyrics, 5)
+    num_unique_5grams = unique_ngrams(lyrics, 5)
+    num_4grams = ngrams(lyrics, 4)
+    num_unique_4grams = unique_ngrams(lyrics, 4)
+    num_trigrams = ngrams(lyrics, 3)
+    num_unique_trigrams = unique_ngrams(lyrics, 3)
+    num_bigrams = ngrams(lyrics, 2)
+    num_unique_bigrams = unique_ngrams(lyrics, 2)
+
+    adjective_count = wordclass(lyrics, 'adjective')
+    noun_count = wordclass(lyrics, 'noun')
+    base_verb_count = wordclass(lyrics, 'base_verb')
+    preposition_count = wordclass(lyrics, 'preposition')
+    personal_pronoun_count = wordclass(lyrics, 'personal_pronoun')
+    non3rdpersonsingularpresent_verb_count = wordclass(lyrics, 'non3rdpersonsingularpresent_verb')
+    thirdpersonsingularpresent_verb_count = wordclass(lyrics, '3rdpersonsingularpresent_verb')
+    TOTAL_verb_count = wordclass(lyrics, 'total_verb')
+    past_participle_verb_freq = wordclass(lyrics, 'past_participle_verb_freq')
+    coordinating_conjunctions_freq = wordclass(lyrics, 'coordinating_conjunctions_freq')
+
+    # Initialize dictionary
+    result_dict = {
+        "num_words": num_words,
+        "number_lines": number_lines,
+        "content_density": content_density,
+        "num_5grams": num_5grams,
+        "num_unique_5grams": num_unique_5grams,
+        "num_4grams": num_4grams,
+        "num_unique_4grams": num_unique_4grams,
+        "num_trigrams": num_trigrams,
+        "num_unique_trigrams": num_unique_trigrams,
+        "num_bigrams": num_bigrams,
+        "num_unique_bigrams": num_unique_bigrams,
+        "adjective_count": adjective_count,
+        "noun_count": noun_count,
+        "base_verb_count": base_verb_count,
+        "preposition_count": preposition_count,
+        "personal_pronoun_count": personal_pronoun_count,
+        "non3rdpersonsingularpresent_verb_count": non3rdpersonsingularpresent_verb_count,
+        "thirdpersonsingularpresent_verb_count": thirdpersonsingularpresent_verb_count,
+        "TOTAL_verb_count": TOTAL_verb_count,
+        "past_participle_verb_freq": past_participle_verb_freq,
+        "coordinating_conjunctions_freq": coordinating_conjunctions_freq
+    }
+
+    # Convert the dictionary to a DataFrame
+    df = pd.DataFrame([result_dict])
+
+    
     status_placeholder.write("This may take some time... ⌛")
 
+    #This is where the prediction for valence/donimance goes
     status_placeholder.empty()
     st.write("Prediction completed! 🎉")
 
