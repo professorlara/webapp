@@ -371,3 +371,24 @@ if st.button("Predict Emotion 🎤"):
 
     plt.title('Dominance Rating',y=-0.4)
     st.pyplot(fig)
+
+
+
+    import pygal
+    from pygal.style import Style
+    
+    
+    custom_style = Style(
+            value_font_size=50,
+            value_colors=('black'),  
+            label_font_size=0,  
+    )
+    
+    gauge = pygal.SolidGauge(
+            half_pie=True,
+            inner_radius=0.70,
+            show_legend=False,
+            style=custom_style
+    )
+    gauge.add('', [{'value': percentageD, 'max_value': 100, 'color': colourD}])
+    gauge.render_in_browser()
