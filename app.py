@@ -4,7 +4,7 @@ import numpy as np
 
 from sklearn.feature_extraction.text import CountVectorizer
 
-from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,wordclass
+from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams
 
 st.markdown(
     """
