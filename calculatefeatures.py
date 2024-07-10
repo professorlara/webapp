@@ -1,8 +1,17 @@
 import stanza
 from sklearn.feature_extraction.text import CountVectorizer
-stanza.download('en', use_progress_bar=False)
-# Load the English model
-nlp = stanza.Pipeline('en')
+
+
+try:
+    # Initialize stanza pipeline if model is already downloaded
+    nlp = stanza.Pipeline('en')
+except Exception as e:
+    # Download the model if not available
+    print("Downloading English model for stanza...")
+    stanza.download('en', use_progress_bar=False)
+    nlp = stanza.Pipeline('en')
+
+
 
 # Define the functions
 def wordcount(text):
