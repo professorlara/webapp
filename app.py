@@ -84,8 +84,8 @@ if st.button("Predict Emotion 🎤"):
         'num_unique_4grams', 'content_density'
         ]
     train = pd.read_csv('TRAIN language data_1.csv',delimiter=";")
-    test = pd.read_csv('TEST language data.csv_1',delimiter=";")
-    validate= pd.read_csv('VAL language data.csv_1',delimiter=";")
+    test = pd.read_csv('TEST language data_1.csv',delimiter=";")
+    validate= pd.read_csv('VAL language data_1.csv',delimiter=";")
     
     
 
