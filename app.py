@@ -393,13 +393,12 @@ if st.button("Predict Emotion 🎤"):
         gauge.title = title  # Set title for the gauge
         gauge.add('', [{'value': percentage, 'max_value': 100, 'color': color}])
         return gauge.render(is_unicode=True)
-    
+        
     # Example data for three gauge charts
     titles = ['Arousal', 'Valence', 'Dominance']
     percentages = [percentageA, percentageV, percentageD]
     colors = [colourA, colourV, colourD]
     
-    # Create gauge charts and store SVGs
     gauge_svgs = []
     for title, percentage, color in zip(titles, percentages, colors):
         gauge_svgs.append(create_gauge_chart(title, percentage, color))
@@ -407,10 +406,9 @@ if st.button("Predict Emotion 🎤"):
     # Display gauge charts side by side in Streamlit
     st.write("<div style='display:flex;'>")
     for gauge_svg in gauge_svgs:
-        st.write(gauge_svg, unsafe_allow_html=True)
+        st.write(f"<div style='margin: auto;'>{gauge_svg}</div>", unsafe_allow_html=True)
     st.write("</div>")
         
-    
     
 
             
