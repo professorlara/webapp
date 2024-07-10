@@ -7,6 +7,8 @@ nltk.data.path.append('/home/appuser/.nltk_data')
 from nltk.tokenize import word_tokenize
 from textblob import TextBlob
 
+from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,wordclass
+
 st.markdown(
     """
     <style>
