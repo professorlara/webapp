@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-from pattern.en import parse
+import stanza
 from sklearn.feature_extraction.text import CountVectorizer
 
 from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,wordclass
