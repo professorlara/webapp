@@ -404,10 +404,10 @@ if st.button("Predict Emotion 🎤"):
         gauge_svgs.append(create_gauge_chart(title, percentage, color))
     
     # Display gauge charts side by side in Streamlit
-    st.write("<div style='display:flex;'>")
+    #st.write("<div style='display:flex;'>")
     for gauge_svg in gauge_svgs:
         st.write(f"<div style='margin: auto;'>{gauge_svg}</div>", unsafe_allow_html=True)
-    st.write("</div>")
+    #st.write("</div>")
         
     
 
