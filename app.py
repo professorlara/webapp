@@ -223,7 +223,7 @@ if st.button("Predict Emotion 🎤"):
     elif new_predictionsA >= 4 and new_predictionsA <=5:
         #st.write("This song has a moderate arousal rating of", str(percentageA), "%.")
         st.markdown('''
-        :black[This] :lightgreen[moderate] :black[arousal rating suggests that the song is upbeat and rhythimical.]''')
+        This :green[moderate] arousal rating suggests that the song is upbeat and rhythimical.''')
         #st.markdown('''
         #:black[This] :lightgreen[moderate] :black[arousal rating suggests that the song is upbeat and rhythimical.]''')
         colourA = 'lightgreen'
