@@ -1,5 +1,6 @@
+from pattern.en import parse
 from sklearn.feature_extraction.text import CountVectorizer
-from textblob import TextBlob
+
 # Define the functions
 def wordcount(text):
     words = text.split()
@@ -8,11 +9,11 @@ def wordcount(text):
 def lines(text):
     res = ""
     for i in text:
-        if(i.isupper()):
-            res+="*"+i
+        if i.isupper():
+            res += "*" + i
         else:
-            res+=i
-    m=res.split("*")
+            res += i
+    m = res.split("*")
     m.remove('')
     numlines = len(m)
     return numlines
@@ -36,8 +37,8 @@ def unique_ngrams(text, n):
     return len(set(n_grams))
 
 def wordclass(text, category):
-    blob = TextBlob(text)
-    tags = blob.tags
+    # Parse the text to get POS tags
+    parsed_text = parse(text, tokenize=True, tag=True)
     
     counts = {
         'adjective': 0,
@@ -52,31 +53,33 @@ def wordclass(text, category):
         'coordinating_conjunctions': 0
     }
     
-    for word, tag in tags:
-        if tag in ['NN', 'NNS', 'NNP', 'NNPS']:
-            counts['noun'] += 1
-        elif tag == 'IN':
-            counts['preposition'] += 1
-        elif tag == 'VB':
-            counts['base_verb'] += 1
-            counts['total_verb'] += 1
-        elif tag in ['VBD', 'VBG']:
-            counts['total_verb'] += 1
-        elif tag == 'VBN':
-            counts['total_verb'] += 1
-            counts['past_participle_verb'] += 1
-        elif tag == 'VBP':
-            counts['non3rdpersonsingularpresent_verb'] += 1
-            counts['total_verb'] += 1
-        elif tag == 'VBZ':
-            counts['3rdpersonsingularpresent_verb'] += 1
-            counts['total_verb'] += 1
-        elif tag in ['JJ', 'JJR', 'JJS']:
-            counts['adjective'] += 1
-        elif tag == 'CC':
-            counts['coordinating_conjunctions'] += 1
-        elif tag == 'PRP':
-            counts['personal_pronoun'] += 1
+    for sentence in parsed_text.split():
+        for word_tag in sentence.split():
+            word, tag = word_tag.split('/')
+            if tag in ['NN', 'NNS', 'NNP', 'NNPS']:
+                counts['noun'] += 1
+            elif tag == 'IN':
+                counts['preposition'] += 1
+            elif tag == 'VB':
+                counts['base_verb'] += 1
+                counts['total_verb'] += 1
+            elif tag in ['VBD', 'VBG']:
+                counts['total_verb'] += 1
+            elif tag == 'VBN':
+                counts['total_verb'] += 1
+                counts['past_participle_verb'] += 1
+            elif tag == 'VBP':
+                counts['non3rdpersonsingularpresent_verb'] += 1
+                counts['total_verb'] += 1
+            elif tag == 'VBZ':
+                counts['3rdpersonsingularpresent_verb'] += 1
+                counts['total_verb'] += 1
+            elif tag in ['JJ', 'JJR', 'JJS']:
+                counts['adjective'] += 1
+            elif tag == 'CC':
+                counts['coordinating_conjunctions'] += 1
+            elif tag == 'PRP':
+                counts['personal_pronoun'] += 1
     
     content_density = (counts['total_verb'] + counts['noun'] + counts['adjective']) / wordcount(text)
     past_participle_verb_freq = counts['past_participle_verb'] / wordcount(text)
