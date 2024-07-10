@@ -408,7 +408,7 @@ if st.button("Predict Emotion 🎤"):
     # Display gauge charts side by side in Streamlit
     st.write("<div style='display:flex;'>")
     for gauge_svg in gauge_svgs:
-        st.write(gauge_svg, unsafe_allow_html=True)
+        st.write(f"<div style='margin: auto;'>{gauge_svg}</div>", unsafe_allow_html=True)    
     st.write("</div>")
     
     
