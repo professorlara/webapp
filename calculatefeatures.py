@@ -1,16 +1,5 @@
-import stanza
+
 from sklearn.feature_extraction.text import CountVectorizer
-
-
-try:
-    # Initialize stanza pipeline if model is already downloaded
-    nlp = stanza.Pipeline('en')
-except Exception as e:
-    # Download the model if not available
-    print("Downloading English model for stanza...")
-    stanza.download('en', use_progress_bar=False)
-    nlp = stanza.Pipeline('en')
-
 
 
 # Define the functions
@@ -48,56 +37,3 @@ def unique_ngrams(text, n):
     n_grams = analyzer(text)
     return len(set(n_grams))
 
-def wordclass(text, category):
-    doc = nlp(text)
-    
-    counts = {
-        'adjective': 0,
-        'noun': 0,
-        'base_verb': 0,
-        'total_verb': 0,
-        'preposition': 0,
-        'personal_pronoun': 0,
-        'non3rdpersonsingularpresent_verb': 0,
-        '3rdpersonsingularpresent_verb': 0,
-        'past_participle_verb': 0,
-        'coordinating_conjunctions': 0
-    }
-    
-    for sentence in doc.sentences:
-        for word in sentence.words:
-            tag = word.xpos
-            if tag in ['NN', 'NNS', 'NNP', 'NNPS']:
-                counts['noun'] += 1
-            elif tag == 'IN':
-                counts['preposition'] += 1
-            elif tag == 'VB':
-                counts['base_verb'] += 1
-                counts['total_verb'] += 1
-            elif tag in ['VBD', 'VBG']:
-                counts['total_verb'] += 1
-            elif tag == 'VBN':
-                counts['total_verb'] += 1
-                counts['past_participle_verb'] += 1
-            elif tag == 'VBP':
-                counts['non3rdpersonsingularpresent_verb'] += 1
-                counts['total_verb'] += 1
-            elif tag == 'VBZ':
-                counts['3rdpersonsingularpresent_verb'] += 1
-                counts['total_verb'] += 1
-            elif tag in ['JJ', 'JJR', 'JJS']:
-                counts['adjective'] += 1
-            elif tag == 'CC':
-                counts['coordinating_conjunctions'] += 1
-            elif tag == 'PRP':
-                counts['personal_pronoun'] += 1
-    
-    content_density = (counts['total_verb'] + counts['noun'] + counts['adjective']) / wordcount(text)
-    past_participle_verb_freq = counts['past_participle_verb'] / wordcount(text)
-    coordinating_conjunctions_freq = counts['coordinating_conjunctions'] / wordcount(text)
-    
-    counts['content_density'] = content_density
-    counts['past_participle_verb_freq'] = past_participle_verb_freq
-    counts['coordinating_conjunctions_freq'] = coordinating_conjunctions_freq
-    
-    return counts[category]
