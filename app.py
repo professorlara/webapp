@@ -338,7 +338,8 @@ if st.button("Predict Emotion 🎤"):
         colourD = 'lightgreen'
     else:
         #st.write("This song has a high dominance rating of", str(percentageD), "%.")
-        st.markdown('''This :green[moderate] dominance rating suggests that the song is impactful and controlled.''')        
+        st.markdown('''
+        This :orange[high] dominance rating suggests that the song is impactful and controlled.''')        
         colourD = 'orange'
     #PLOT
 
