@@ -89,7 +89,7 @@ if st.button("Predict Emotion 🎤"):
 
     plt.title('Arousal Rating',y=-0.4)
     st.pyplot(fig)
-v
+
     #TEXT TO GO WITH PLOT
     #percentageV =  round((new_predictionsV[0]/7)*100,1)
     percentageV = 95
