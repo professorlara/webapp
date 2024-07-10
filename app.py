@@ -71,6 +71,24 @@ if st.button("Predict Emotion 🎤"):
     status_placeholder.write("This may take some time... ⌛")
 
     #This is where the prediction for valence/donimance goes
+
+
+    from sklearn.ensemble import GradientBoostingRegressor
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import mean_absolute_error
+
+    features = [
+        'num_words', 'num_5grams', 'num_4grams',
+        'num_unique_bigrams', 'num_unique_trigrams', 'num_unique_5grams',
+        'num_trigrams', 'number_lines', 'num_bigrams',
+        'num_unique_4grams', 'content_density'
+        ]
+    
+
+
+
+
+    
     status_placeholder.empty()
     st.write("Prediction completed! 🎉")
 
