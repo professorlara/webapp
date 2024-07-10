@@ -209,10 +209,8 @@ if st.button("Predict Emotion 🎤"):
     st.write("Prediction completed! 🎉")
 
 
-    #percentageA =  round((new_predictionsA[0]/7)*100,1)
-    percentageA = 50
-    new_predictionsA = 4
-    
+    percentageA =  round((new_predictionsA[0]/7)*100,1)
+   
 
     #TEXT TO GO WITH PLOT
 
@@ -268,9 +266,8 @@ if st.button("Predict Emotion 🎤"):
     st.pyplot(fig)
 
     #TEXT TO GO WITH PLOT
-    #percentageV =  round((new_predictionsV[0]/7)*100,1)
-    percentageV = 95
-    new_predictionsV = 6.5
+    percentageV =  round((new_predictionsV[0]/7)*100,1)
+
 
     if new_predictionsV < 4:
         #st.write("This song has a low valence rating of",str(percentageV), "%.")
@@ -322,10 +319,9 @@ if st.button("Predict Emotion 🎤"):
 
      #TEXT TO GO WITH PLOT
 
-    #percentageD =  round((new_predictionsD[0]/7)*100,1)
+    percentageD =  round((new_predictionsD[0]/7)*100,1)
 
-    percentageD = 70
-    new_predictionsD = 5
+
 
 
     if new_predictionsD < 4:
