@@ -221,7 +221,7 @@ if st.button("Predict Emotion 🎤"):
         st.write("This :blue[low] arousal rating suggests that the song is **calm** and **relaxing.**")
         colourA = 'lightblue'
     elif new_predictionsA >= 2.3 and new_predictionsA <=5:
-        #st.write("This song has a moderate arousal rating of", str(percentageA-5), "%.")
+        #st.write("This song has a moderate arousal rating of", str(round(percentageA-5),1), "%.")
         st.write("This :green[moderate] arousal rating suggests that the song is **upbeat** and **rhythmical.**")
         colourA = 'lightgreen'
     else:
@@ -336,7 +336,7 @@ if st.button("Predict Emotion 🎤"):
         colourD = 'lightgreen'
     else:
         #st.write("This song has a high dominance rating of", str(percentageD), "%.")
-        st.write("This :orange[high] dominance rating suggests that the song is **impactful** and **controlled.**")        
+        st.write("This :orange[high] dominance rating suggests that the song is **assertive** and **intense.**")        
         colourD = 'orange'
     #PLOT
 
