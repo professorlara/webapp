@@ -208,7 +208,7 @@ if st.button("Predict Emotion 🎤"):
     st.write("Prediction completed! 🎉")
 
 
-    percentageA =  round((new_predictionsA[0]/7)*100,1)
+    percentageA =  round((new_predictionsA[0]/7)*90,1)
    
 
     #TEXT TO GO WITH PLOT
@@ -221,7 +221,7 @@ if st.button("Predict Emotion 🎤"):
         st.write("This :blue[low] arousal rating suggests that the song is **calm** and **relaxing.**")
         colourA = 'lightblue'
     elif new_predictionsA >= 2.3 and new_predictionsA <=5:
-        #st.write("This song has a moderate arousal rating of", str(round(percentageA-5),1), "%.")
+        #st.write("This song has a moderate arousal rating of", str(percentageA), "%.")
         st.write("This :green[moderate] arousal rating suggests that the song is **upbeat** and **rhythmical.**")
         colourA = 'lightgreen'
     else:
@@ -234,7 +234,7 @@ if st.button("Predict Emotion 🎤"):
     import matplotlib.pyplot as plt
 
 
-    arousal_rating = percentageA-5
+    arousal_rating = percentageA
 
 
     fig, ax = plt.subplots(figsize=(10, 2))
