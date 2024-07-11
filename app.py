@@ -221,7 +221,7 @@ if st.button("Predict Emotion 🎤"):
         st.write("This :blue[low] arousal rating suggests that the song is **calm** and **relaxing.**")
         colourA = 'lightblue'
     elif new_predictionsA >= 2.3 and new_predictionsA <=5:
-        #st.write("This song has a moderate arousal rating of", str(percentageA), "%.")
+        #st.write("This song has a moderate arousal rating of", str(percentageA-5), "%.")
         st.write("This :green[moderate] arousal rating suggests that the song is **upbeat** and **rhythmical.**")
         colourA = 'lightgreen'
     else:
@@ -234,7 +234,7 @@ if st.button("Predict Emotion 🎤"):
     import matplotlib.pyplot as plt
 
 
-    arousal_rating = percentageA
+    arousal_rating = percentageA-5
 
 
     fig, ax = plt.subplots(figsize=(10, 2))
@@ -251,7 +251,7 @@ if st.button("Predict Emotion 🎤"):
     #Needle
     needle_position = arousal_rating
     ax.plot([needle_position, needle_position], [-0.5, 0.5], color='black', linewidth=2)
-    ax.text(needle_position, 0.65, f'{arousal_rating-0.1}%', horizontalalignment='center', verticalalignment='center', color='black', fontsize=12)
+    ax.text(needle_position, 0.65, f'{arousal_rating}%', horizontalalignment='center', verticalalignment='center', color='black', fontsize=12)
 
     #Labels
     label_positions = [(positions[i] + positions[i + 1]) / 2 for i in range(len(sections))]
