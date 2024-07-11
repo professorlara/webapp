@@ -273,15 +273,15 @@ if st.button("Predict Emotion 🎤"):
 
     if new_predictionsV < 4:
         #st.write("This song has a low valence rating of",str(percentageV), "%.")
-        st.write("This low valence rating suggests that the song is melancholic and sad.")
+        st.write("This :blue[low] valence rating suggests that the song is melancholic and sad.")
         colourV = 'lightblue'
     elif new_predictionsV >= 4 and new_predictionsV <=5:
         #st.write("This song has a moderate valence rating of", str(percentageV), "%.")
-        st.write("This moderate valence rating suggests that the song is pleasant and neutral.")
+        st.write("This :green[moderate] valence rating suggests that the song is pleasant and neutral.")
         colourV = 'lightgreen'
     else:
         #st.write("This song has a high valence rating of", str(percentageV), "%.")
-        st.write("This high valence rating suggests that the song is joyful and happy.")
+        st.write("This :orange[high] valence rating suggests that the song is joyful and happy.")
         colourV = 'orange'
     #PLOT
 
@@ -336,7 +336,7 @@ if st.button("Predict Emotion 🎤"):
         colourD = 'lightgreen'
     else:
         #st.write("This song has a high dominance rating of", str(percentageD), "%.")
-        st.write("This high dominance rating suggests that the song is impactful and controlled")        
+        st.write("This high dominance rating suggests that the song is impactful and controlled.")        
         colourD = 'orange'
     #PLOT
 
