@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 
 from sklearn.feature_extraction.text import CountVectorizer
-
-from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams
+from transformers import pipeline
+from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,huggingface
 
 st.markdown(
     """
@@ -47,6 +47,10 @@ if st.button("Predict Emotion 🎤"):
     num_unique_trigrams = unique_ngrams(lyrics, 3)
     num_bigrams = ngrams(lyrics, 2)
     num_unique_bigrams = unique_ngrams(lyrics, 2)
+    minimum_sentiment = huggingface(lyrics,'minimum_sentiment')
+    minimum_sentence = huggingface(lyrics,'minimum_sentence')
+    maximum_sentiment = huggingface(lyrics,'maximum_sentiment')
+    maximum_sentence = huggingface(lyrics,'maximum_sentence')
 
 
     # Initialize dictionary
@@ -206,7 +210,8 @@ if st.button("Predict Emotion 🎤"):
     
     status_placeholder.empty()
     st.write("Prediction completed! 🎉")
-
+    st.write(f"The **happiest** line in the song is: *{maximum_sentence}* 😍")
+    st.write(f"The **saddest** line in the song is: *{minimum_sentence}* 😭")
 
     percentageA =  round((new_predictionsA[0]/7)*90,1)
    
