@@ -392,67 +392,7 @@ if st.button("Predict Emotion 🎤"):
 
 
     
-    # Bokeh visualisation
-    from bokeh.models import ColumnDataSource, LabelSet, HoverTool
-    from bokeh.plotting import figure
 
-    # Check if the predictions are within expected ranges
-    print("New Predictions (Arousal):", new_predictionsA[0])
-    print("New Predictions (Valence):", new_predictionsV[0])
-
-    # Data for existing songs
-    songs = ['Shake it Off', 'Yesterday', 'Bohemian Rhapsody', 'Last Kiss',
-            'Teardrops on My Guitar', 'Someone like You (Live Version)',
-            'Set Fire to the Rain', 'Nothing Breaks Like a Heart',
-            'Viva La Vida', 'Believer']
-    artists = ['Taylor Swift', 'The Beatles', 'Queen', 'Taylor Swift', 'Taylor Swift',
-            'Adele', 'Adele', 'Mark Ronson, Miley Cyrus', 'Coldplay',
-            'Imagine Dragons']
-    valence = [7.3, 4.1, 6.8, 3.7, 4.9, 2.9, 5.7, 7.4, 3.4, 7.2]
-    arousal = [5.3, 3.6, 5.0, 3.9, 4.6, 3.9, 4.5, 6.8, 1.7, 4.8]
-
-    data = pd.DataFrame({
-        'song': songs,
-        'artist': artists,
-        'valence': valence,
-        'arousal': arousal
-    })
-
-    source = ColumnDataSource(data)
-
-    # Data for the new song
-    your_song_data = pd.DataFrame({
-        'valence': [new_predictionsV[0]],
-        'arousal': [new_predictionsA[0]]
-    })
-    your_song_source = ColumnDataSource(your_song_data)
-
-    # Create the figure
-    p = figure(title="Valence and Arousal of Songs",
-            x_axis_label="Valence",
-            y_axis_label="Arousal",
-            x_range=(1, 8),  
-            y_range=(1, 8),  
-            tools="pan,wheel_zoom,box_zoom,reset,save")
-
-    # Add hover tool
-    hover = HoverTool(tooltips=[("Song", "@song"), ("Artist", "@artist"), ("Valence", "@valence{0.0}"), ("Arousal", "@arousal{0.0}")])
-    p.add_tools(hover)
-
-    # Scatter plot for existing songs
-    p.scatter("valence", "arousal", size=12, source=source, color="blue", alpha=0.6)
-
-    # Scatter plot for your song
-    p.scatter("valence", "arousal", size=12, source=your_song_source, color="red", alpha=0.9, legend_label="Your Song")
-
-    # Add labels
-    labels = LabelSet(x="valence", y="arousal", text="song", y_offset=8,
-                    text_font_size="11px", text_color="#555555",
-                    source=source, text_align='center')
-    p.add_layout(labels)
-
-    # Show the plot in Streamlit
-    st.bokeh_chart(p)
 
 
 
