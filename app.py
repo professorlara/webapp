@@ -212,7 +212,7 @@ if st.button("Predict Emotion 🎤"):
     #st.write(f"The **happiest** line in the song is: *{maximum_sentence}* 😍")
     #st.write(f"The **saddest** line in the song is: *{minimum_sentence}* 😭")
 
-    percentageA =  round((new_predictionsA[0]/7)*90,1)
+    percentageA =  round((new_predictionsA[0]/8)*100,1)
    
 
     #TEXT TO GO WITH PLOT
@@ -220,11 +220,11 @@ if st.button("Predict Emotion 🎤"):
 
 
 
-    if new_predictionsA < 2.3:
+    if new_predictionsA < 2.67:
         #st.write("This song has a low arousal rating of",str(percentageA), "%.")
         st.write("This :blue[low] arousal rating suggests that the song is **calm** and **relaxing.**")
         colourA = 'lightblue'
-    elif new_predictionsA >= 2.3 and new_predictionsA <=5:
+    elif new_predictionsA >= 2.64 and new_predictionsA <=5.33:
         #st.write("This song has a moderate arousal rating of", str(percentageA), "%.")
         st.write("This :green[moderate] arousal rating suggests that the song is **upbeat** and **rhythmical.**")
         colourA = 'lightgreen'
@@ -272,14 +272,14 @@ if st.button("Predict Emotion 🎤"):
     st.pyplot(fig)
 
     #TEXT TO GO WITH PLOT
-    percentageV =  round((new_predictionsV[0]/7)*100,1)
+    percentageV =  round((new_predictionsV[0]/8)*100,1)
 
 
-    if new_predictionsV < 4:
+    if new_predictionsV < 2.67:
         #st.write("This song has a low valence rating of",str(percentageV), "%.")
         st.write("This :blue[low] valence rating suggests that the song is **melancholic** and **sad.**")
         colourV = 'lightblue'
-    elif new_predictionsV >= 4 and new_predictionsV <=5:
+    elif new_predictionsV >= 4 and new_predictionsV <=5.33:
         #st.write("This song has a moderate valence rating of", str(percentageV), "%.")
         st.write("This :green[moderate] valence rating suggests that the song is **pleasant** and **neutral**.")
         colourV = 'lightgreen'
@@ -325,16 +325,16 @@ if st.button("Predict Emotion 🎤"):
 
      #TEXT TO GO WITH PLOT
 
-    percentageD =  round((new_predictionsD[0]/7)*100,1)
+    percentageD =  round((new_predictionsD[0]/8)*100,1)
 
 
 
 
-    if new_predictionsD < 4:
+    if new_predictionsD < 2.67:
         #st.write("This song has a low dominance rating of",str(percentageD), "%.")
         st.write("This :blue[low] dominance rating suggests that the song is **gentle** and **reserved.**")
         colourD = 'lightblue'
-    elif new_predictionsD >= 4 and new_predictionsD <=5:
+    elif new_predictionsD >= 4 and new_predictionsD <=5.33:
         #st.write("This song has a moderate dominance rating of", str(percentageD), "%.")
         st.write("This :green[moderate] dominance rating suggests that the song is **impactful** and **controlled.**")
         colourD = 'lightgreen'
