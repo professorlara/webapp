@@ -6,4 +6,3 @@ scikit-learn
 pygal
 transformers == 4.42.0
 
-pytorch
