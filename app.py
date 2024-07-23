@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import tensorflow
+import pytorch
 from sklearn.feature_extraction.text import CountVectorizer
 from transformers import pipeline
 from calculatefeatures import type_token_ratio,wordcount,lines,ngrams,unique_ngrams,huggingface
