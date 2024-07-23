@@ -46,7 +46,7 @@ if st.button("Predict Emotion 🎤"):
     num_unique_trigrams = unique_ngrams(lyrics, 3)
     num_bigrams = ngrams(lyrics, 2)
     num_unique_bigrams = unique_ngrams(lyrics, 2)
-    minimum_sentiment = huggingface(lyrics,'minimum_sentiment')
+    #minimum_sentiment = huggingface(lyrics,'minimum_sentiment')
     #minimum_sentence = huggingface(lyrics,'minimum_sentence')
     #maximum_sentiment = huggingface(lyrics,'maximum_sentiment')
     #maximum_sentence = huggingface(lyrics,'maximum_sentence')
