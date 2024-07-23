@@ -390,7 +390,7 @@ if st.button("Predict Emotion 🎤"):
         label_font_size=0,
         value_label_font_size = 20
     )
-    
+    '''
     def create_gauge_chart(title, percentage, color):
         gauge = pygal.SolidGauge(
             half_pie=True,
@@ -416,7 +416,7 @@ if st.button("Predict Emotion 🎤"):
     for gauge_svg in gauge_svgs:
         st.write(f"<div style='margin: auto;'>{gauge_svg}</div>", unsafe_allow_html=True)
     #st.write("</div>")
-        
+    '''
     
 
             
