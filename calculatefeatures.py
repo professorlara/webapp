@@ -6,7 +6,7 @@ from transformers import pipeline
 # Define the functions
 def huggingface(text,category):
      # Initialize the sentiment analysis pipeline with the RoBERTa model
-    sentiment_pipeline = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+    sentiment_pipeline = pipeline("sentiment-analysis", model="siebert/sentiment-roberta-large-english")
 
     # Split the text into lines and filter out empty lines and lines starting with '['
     lines = [line for line in text.split('\n') if line and not line.startswith('[')]
